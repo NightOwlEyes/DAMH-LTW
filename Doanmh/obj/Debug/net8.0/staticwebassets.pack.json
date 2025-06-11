@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\Doanmh\\wwwroot\\Image\\Không Có Tiêu Đề14_0000-52-05_20250611214909 1.svg",
+      "PackagePath": "staticwebassets\\Image\\Không Có Tiêu Đề14_0000-52-05_20250611214909 1.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\Doanmh\\wwwroot\\Image\\login.png",
+      "PackagePath": "staticwebassets\\Image\\login.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\Doanmh\\wwwroot\\globals.css",
+      "PackagePath": "staticwebassets\\globals.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\Doanmh\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\Doanmh\\wwwroot\\style.css",
+      "PackagePath": "staticwebassets\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\Doanmh\\wwwroot\\styleguide.css",
+      "PackagePath": "staticwebassets\\styleguide.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Doanmh.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Doanmh.props",
+      "PackagePath": "build\\Doanmh.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Doanmh.props",
+      "PackagePath": "buildMultiTargeting\\Doanmh.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Doanmh.props",
+      "PackagePath": "buildTransitive\\Doanmh.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
