@@ -1,6 +1,0 @@
-@Doanmh_HostAddress = http://localhost:5237
-
-GET {{Doanmh_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
