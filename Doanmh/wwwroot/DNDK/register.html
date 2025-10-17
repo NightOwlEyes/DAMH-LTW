@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Đăng ký nhân viên</title>
+</head>
+<body>
+    <div class="ng-k">
+        <div class="div">
+            <div class="illustration"></div>
+            <div class="content">
+                <div class="div-2">
+                    <div class="text-wrapper">Đăng ký nhân viên</div>
+                </div>
+                <div class="form">
+                    <div class="div-2">
+                        <div class="input">
+                            <div class="label">Tên đăng nhập</div>
+                            <div class="field">
+                                <input id="username" type="text" placeholder="Tên đăng nhập" />
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <div class="label">Họ và tên</div>
+                            <div class="field">
+                                <input id="fullname" type="text" placeholder="Nhập họ tên đầy đủ" />
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <div class="label">Email</div>
+                            <div class="field">
+                                <input id="email" type="email" placeholder="Email" />
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <div class="label">Số điện thoại</div>
+                            <div class="field">
+                                <input id="phone" type="text" placeholder="Số điện thoại" />
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <div class="label">Địa chỉ</div>
+                            <div class="field">
+                                <input id="address" type="text" placeholder="Địa chỉ" />
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <div class="label">Mật khẩu</div>
+                            <div class="field">
+                                <input id="password" type="password" placeholder="Mật khẩu" />
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <div class="label">Xác nhận mật khẩu</div>
+                            <div class="field">
+                                <input id="confirm-password" type="password" placeholder="Xác nhận mật khẩu" />
+                            </div>
+                        </div>
+
+                        <button id="register-btn" class="button" type="button">
+                            <div class="value">TẠO TÀI KHOẢN</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="value-2"><a href="login.html">Đăng nhập</a></div>
+                <img class="khng-c-tiu" src="../Image/logo.svg" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("register-btn").addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            // Lấy giá trị xác nhận mật khẩu trước
+            const confirm = document.getElementById("confirm-password").value;
+
+            // Tạo object user từ form
+            const user = {
+                username: document.getElementById("username").value.trim(),
+                password: document.getElementById("password").value,
+                confirmPassword: confirm,
+                email: document.getElementById("email").value.trim(),
+                fullName: document.getElementById("fullname").value.trim(),
+                phoneNumber: document.getElementById("phone").value.trim(),
+                address: document.getElementById("address").value.trim(),
+                role: "User" // gán mặc định
+            };
+
+            // Kiểm tra xác nhận mật khẩu
+            if (user.password !== confirm) {
+                alert("Mật khẩu xác nhận không khớp.");
+                return;
+            }
+
+            try {
+                const res = await fetch("https://localhost:7218/api/Auth/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(user)
+                });
+
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    throw new Error(errorText || "Đăng ký thất bại");
+                }
+
+                alert("Đăng ký thành công!");
+                window.location.href = "login.html";
+            } catch (err) {
+                alert("Lỗi: " + err.message);
+            }
+        });
+    </script>
+</body>
+</html>

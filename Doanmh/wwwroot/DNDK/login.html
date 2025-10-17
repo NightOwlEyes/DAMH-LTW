@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="ng-nhp">
+        <div class="div">
+            <div class="illustration"></div>
+            <img class="khng-c-tiu" src="../Image/logo.svg" />
+            <div class="content">
+                <div class="heading">
+                    <div class="text-wrapper">ĐĂNG NHẬP</div>
+                    <p class="p">Nếu bạn không có tài khoản, vui lòng liên hệ quản lý để cấp</p>
+                </div>
+                <div class="form">
+                    <div class="fields">
+                        <div class="input">
+                            <div class="field">
+                                <input type="text"
+                                       class="text-wrapper-2"
+                                       placeholder="Tên đăng nhập"
+                                       id="username" />
+                            </div>
+                        </div>
+                        <div class="input">
+                            <div class="field-2">
+                                <input type="password"
+                                       class="text-wrapper-2"
+                                       placeholder="Mật khẩu"
+                                       id="password" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="checkbox-button">
+                            <input type="checkbox" id="remember-login" class="checkbox-icon" />
+                            <label for="remember-login" class="value">Duy trì phiên đăng nhập</label>
+                        </div>
+                        <div class="value-2"><a href="opp.html">Quên mật khẩu?</a></div>
+                    </div>
+                    <button class="button" id="login-btn">
+                        <div class="value-3">Đăng nhập</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript xử lý đăng nhập -->
+    <script>
+      document.getElementById("login-btn").addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!username || !password) {
+          alert("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.");
+          return;
+        }
+
+        try {
+          const response = await fetch("https://localhost:7218/api/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Sai tài khoản hoặc mật khẩu!");
+          }
+
+          const data = await response.json();
+           alert("Đăng nhập thành công!");
+
+         localStorage.setItem("token", data.token);
+
+          // Chuyển hướng nếu đăng nhập thành công
+          window.location.href = "/dndk/dashboard.html";
+
+        } catch (error) {
+          alert(error.message);
+        }
+      });
+    </script>
+</body>
+</html>

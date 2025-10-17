@@ -1,0 +1,20 @@
+# Visual Studio & VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.vsidx
+*.db
+*.VC.db
+
+# Flutter & build files
+build/
+.dart_tool/
+.idea/
+.packages
+.pub-cache/
+pubspec.lock
+
+# System
+.DS_Store
+Thumbs.db
