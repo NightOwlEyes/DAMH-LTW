@@ -64,6 +64,30 @@ namespace Doanmh.Repository
             return true;
         }
 
+        public async Task<bool> RegisterAdminAsync(RegisterDto dto)
+        {
+            if (dto.Password != dto.ConfirmPassword)
+                return false;
+
+            var exists = await _context.Users.AnyAsync(u => u.Username == dto.Username);
+            if (exists) return false;
+
+            var user = new User
+            {
+                Username = dto.Username,
+                Password = dto.Password, // TODO: Hash password in real app
+                Email = dto.Email,
+                FullName = dto.FullName,
+                PhoneNumber = dto.PhoneNumber,
+                Address = dto.Address,
+                Role = "Admin"
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<User> LoginAsync(string username, string password)
         {
             return await _context.Users
